@@ -243,7 +243,15 @@ The execution speed is faster for the optimized code because it no longer has to
     
 ```
 </details>
-
-
+Sample Output:
+```python:
+Precision: Double
+Sample Size: 10000
+Total Memory footprint (MB): 48MB
+Total Memory footprint (GB): 0.0468293 GB
+ 
+Pi: 3.14304
+time: 0.002748
+```
 
 
