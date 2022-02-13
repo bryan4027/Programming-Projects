@@ -8,7 +8,7 @@ The purpose of this project is to generate a code that simulates a pandemic. It 
 
 ```cpp:
 
- #include <iostream>
+#include <iostream>
 #include <string>
 #include <memory>
 #include <stdio.h>
