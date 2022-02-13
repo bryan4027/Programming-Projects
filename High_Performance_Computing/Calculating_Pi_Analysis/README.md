@@ -243,8 +243,11 @@ The execution speed is faster for the optimized code because it no longer has to
     
 ```
 </details>
+  
 Sample Output:
+  
 ```python:
+  
 Precision: Double
 Sample Size: 10000
 Total Memory footprint (MB): 48MB
