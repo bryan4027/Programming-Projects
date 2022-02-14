@@ -1,248 +1,259 @@
-# Calculating Pi, analysis of runtime and memory
+# Pandemic Simulation
 
-The purpose of this project is to generate a code that calculates Pi then analyze the program runtime and runtime. Finally, to optimize it to run faster and more efficiently. I then wrote a writeup by generating a PDF with a Latex Code.
+The purpose of this project is to generate a code that simulates a pandemic. It requests how big the population is, how contagious the population is, how many people are infected, and how many people dont social distance. Then, it shows how many days it takes for the disease to dissepate. The coolest part about it is seeing how fast or how slow the disease spreads.
 
 
 <details>
-<summary>Show C++ code </summary>
-Python
+  <summary>Show C++ code </summary>
 
 ```cpp:
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <vector>
-#include <sys/time.h>
 
-using namespace std;
-
-int main (){
-  srand (time(NULL));
-  int size = 100000;
-  double size_in_double = 100000;
-  double sumnum = 0;
-  int count = 0;
-  struct timeval start, end;
-  float delta;
-
-  vector<double> xvalues(size);
-  vector<double> yvalues(size);
-
-  for (int i = 0; i < size; i++) { // step 1: assigns random value to each e\
-lement
-    xvalues[i] = double(rand())/double(RAND_MAX);
-    yvalues[i] = double(rand())/double(RAND_MAX);
-  }
-  // gettimeofday(&start, NULL);
-
-  vector<double> xvalues_squared(size);
-  vector<double> yvalues_squared(size);
-
-  for (int i = 0; i < size; i++) { // squares each element
-    xvalues_squared[i] = xvalues[i] * xvalues[i];
-    yvalues_squared[i] = yvalues[i] * yvalues[i];
-  }
-
-  vector<double> added_values(size);
-
-  for (int i = 0; i < size; i++) { // add x and y
-    added_values[i] = xvalues_squared[i] +  yvalues_squared[i];
-  }
-
-
-  for (int i = 0; i < size; i++) { // sums all values <= 1
-    if (added_values[i] <= 1) {
-      sumnum += 1;
-    }
-  }
-  //cout << sumnum << endl;
-
-  double final_value = (4*sumnum) /size_in_double;
-
-  //cout << final_value << endl;
-
-  gettimeofday(&end, NULL);
-  delta = ((end.tv_sec-start.tv_sec)*1000000u + end.tv_usec-start.tv_usec)/\
-    1.e6;
-  double memorie = (64*8*size)/(1024*1024);
-  cout << "Precision: Double"  << endl;
-  cout << "Sample Size: 10000" << endl;
-  cout << "Total Memory footprint (MB): " << memorie << "MB"  << endl;
-  cout << "Total Memory footprint (GB): " <<  memorie/1025 << " GB" << endl;
-  cout << " " << endl;
-  cout << "Pi: " << final_value << endl;
-  cout << "time: " << delta << endl;
-
-  return 0;
-}
-    
-```
-</details>
-
-<details>
-<summary>Show Latex Code: </summary>
-
-```latex:
-\section{Original Code:}
-\begin{lstlisting}
 #include <iostream>
+#include <string>
+#include <memory>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <ctime>
 #include <vector>
-#include <sys/time.h>
-
+#include <math.h>
+#include <iomanip>
 using namespace std;
 
-int main (){
-  srand (time(NULL));
-  int size = 100000;
-  double size_in_double = 100000;
-  double sumnum = 0;
-  int count = 0;
-  struct timeval start, end;
-  float delta;
-
-  vector<double> xvalues(size);
-  vector<double> yvalues(size);
-
-  for (int i = 0; i < size; i++) { // step 1: assigns random value to each element
-    xvalues[i] = double(rand())/double(RAND_MAX);
-    yvalues[i] = double(rand())/double(RAND_MAX);
-  }
-  // gettimeofday(&start, NULL);
-
-  vector<double> xvalues_squared(size);
-  vector<double> yvalues_squared(size);
-
-  for (int i = 0; i < size; i++) { // squares each element
-    xvalues_squared[i] = xvalues[i] * xvalues[i];
-    yvalues_squared[i] = yvalues[i] * yvalues[i];
-  }
-
-  vector<double> added_values(size);
-
-  for (int i = 0; i < size; i++) { // add x and y
-    added_values[i] = xvalues_squared[i] +  yvalues_squared[i];
-  }
-
-
-  for (int i = 0; i < size; i++) { // sums all values <= 1
-    if (added_values[i] <= 1) {
-    sumnum += 1;
+class person {
+    protected: // members
+    int state;
+    string status;
+    public: // methods
+    person() { int state = 0 ;};
+    string status_string() {
+        if (state == 0) {
+            status = ("susceptible");
+        }
+        if (state > 0) {
+            status = ("sick");
+        }
+        if (state == -1) {
+            status = ("recovered");
+        }
+        if (state  == -2) {
+            status = ("vaccinated");
+        }
+        return status;
     }
-  }
-  //cout << sumnum << endl;
+    void update() {
+            if (state == 1 ) {
+                state =-1;
+            } else 
+            if (state > 0) {
+                state = state -1 ; 
+            } else {}
 
-  double final_value = (4*sumnum) /size_in_double;
-
-  //cout << final_value << endl;
-
-  gettimeofday(&end, NULL);
-  delta = ((end.tv_sec-start.tv_sec)*1000000u + end.tv_usec-start.tv_usec)/\
-    1.e6;
-  double memorie = (64*8*size)/(1024*1024);
-  cout << "Precision: Double"  << endl;
-  cout << "Sample Size: 10000" << endl;
-  cout << "Total Memory footprint (MB): " << memorie << "MB"  << endl;
-  cout << "Total Memory footprint (GB): " <<  memorie/1025 << " GB" << endl;
-  cout << " " << endl;
-  cout << "Pi: " << final_value << endl;
-  cout << "time: " << delta << endl;
-    return 0;
-}
-
-\end{lstlisting}
-\section{Assignment part 1:}
-This is the output when ran: \\ 
-\begin{lstlisting}
-Precision: Double
-Sample Size: 10000
-Total Memory footprint (MB): 48MB
-Total Memory footprint (GB): 0.0468293 GB 
-
-Pi: 3.142
-time: 8.02054e+12
-\end{lstlisting}
-
-\section{Assignment part 2:}
-Explain	how	often	data	is	moved	from	memory	into	the	CPU	(and	back!)	for	the individual	steps.	Does	the	cache	(or	the	caches)	provide	any	help	to	boost	performance?
-ans. the data is accessed, moved, and edited each time that the computer runs through the loop and each time that is accesses the vector. the cache makes the needed data easier and faster to access.
-Why	would	the	calculation	give	an	incorrect	result	for	a	large	sample	size (like	the	one	we	are	using	here,	see	‘Part 4’),	if	the	variable ‘num inside’	was	a	single	precision number?	\\ 
-
-ans. The memory allocated for a single precision number was not large enough to contain the number. Also, with a large enough number, the random function can start malfunctioning and stop being random.
-
-\section{Assignment part 3:}
-old code:
-\begin{lstlisting}
-vector<double> xvalues_squared(size);
-  vector<double> yvalues_squared(size);
-
-  for (int i = 0; i < size; i++) { // squares each element
-    xvalues_squared[i] = xvalues[i] * xvalues[i];
-    yvalues_squared[i] = yvalues[i] * yvalues[i];
-  }
-
-  vector<double> added_values(size);
-
-  for (int i = 0; i < size; i++) { // add x and y
-    added_values[i] = xvalues_squared[i] +  yvalues_squared[i];
-  }
-
-
-  for (int i = 0; i < size; i++) { // sums all values <= 1
-    if (added_values[i] <= 1) {
-      sumnum += 1;
+        }
+    void infect(int n) {
+            if (state==0)
+            state = n;
+            }
+    bool is_stable() {
+            if (state ==-1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    void set_vaccinated() { 
+        state = -2;
     }
-  }
-  double final_value = (4*sumnum) /size_in_double;
-\end{lstlisting}
-is changed into: 
-\begin{lstlisting}
-  double x,y,z;
-  for (int i = 0; i < size; i++) { // squares each element
-    x = xvalues[i];
-    x = x*x;
-    y = yvalues[i];
-    y = y*y;
-    sum = x + y;
-    if (sum <= 1) {
-    totalsum += 1;
+    bool is_infected() {
+         if (state >0) {
+                return true;
+            } else {
+                return false;
+            }
     }
-  }
-  double final_value = (4*totalsum) /size_in_double;
-\end{lstlisting}
-and the output changes from:
-\begin{lstlisting}
-Precision: Double
-Sample Size: 10000
-Total Memory footprint (MB): 48MB
-Total Memory footprint (GB): 0.0468293 GB
- 
-Pi: 3.14624
-time: 0.005875
-\end{lstlisting}
-into:
-\begin{lstlisting}
-Precision: Double
-Sample Size: 10000
-Total Memory footprint (MB): 48MB
-Total Memory footprint (GB): 0.0468293 GB
- 
-Pi: 3.14304
-time: 0.002748
-\end{lstlisting}
-
-\section{Assignment part 4:}
-The numactl command allows you to compile/run a program on a specific node (useful for idev. The two flags specify with node to use, specifically the one the idev is running on.
-
-\section{Assignment part 5:}
-The execution speed is faster for the optimized code because it no longer has to access the vectors one by one. Now it only calls an element from a vector once and assigns it to a variable, making it a lot easier and faster to access. Also, now it doesn't run through as many loops, so it doesn't have to access the same memory as many times.
-
-\end{document}
+    bool is_vaccinated() {
+         if (state ==-2) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+    bool is_succectible() {
+         if (state ==0) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+};
+class population {
+    private:
+    double random_person,prob,vaccinated,random_vaccinated,contact;
     
+    int counted = 0;
+    vector <person> populationn;
+    public:
+    population(int ppl) { 
+        populationn = vector<person>(ppl); 
+    };
+    // int npeople inside ()
+    void random_infection() {
+        int randomindex = ( rand() * 100 ) ;
+        randomindex = floor(randomindex % populationn.size()) ;
+        populationn.at(randomindex).infect(5);
+    }
+
+    int count_infected() {
+		int total = 0;
+		for (auto& x : populationn) {
+			if (x.is_infected()) {
+				total++;
+			}
+		}
+		return total;
+	}
+	int count_vaccinated() {
+		int count = 0;
+		for (auto& x : populationn) {
+			if (x.is_vaccinated()) {
+				count++;
+				
+			}
+		}
+		return count;
+	}
+    void update2() {
+            for (int i = 0; i < populationn.size(); i++) {
+                populationn.at(i).update();
+            }
+            for (int i = 0; i < contact * count_infected(); i++) {
+			float luck = (float)rand() / (float)RAND_MAX;
+			if (luck <= prob) {
+				double bad_luck = rand() % populationn.size();
+				int position = floor(bad_luck);
+				populationn.at(position).infect(5);
+				
+			}
+        }
+        }
+    void printme() {
+        for (int i = 0; i< populationn.size(); i++ ) { 
+            if (populationn.at(i).is_stable()) {
+                cout << " -" ;
+            } else if (populationn.at(i).is_succectible()) { 
+                cout << " ?" ;
+            } else if (populationn.at(i).is_infected()) { 
+                cout << " +" ;
+            } else if (populationn.at(i).is_vaccinated())
+                {
+                     cout << " v";
+                     }
+            }
+    }
+    void contagion() {
+        float bad_luck;
+        int j = 1;
+        for (int i = 0; i < populationn.size(); i++) {
+            if (populationn.at(i).is_infected()&& j == 1) {
+                bad_luck = (rand() % 100)*0.01;
+                if (bad_luck<=prob && i != 0) {
+                    populationn.at(i-1).infect(5);
+                }
+                bad_luck = (rand() % 100)*0.01;
+                if (bad_luck<=prob && i != (populationn.size()-1)) {
+                    if (populationn.at(i+1).is_succectible()) {
+                        j = 0;
+                    } else { j=1;}
+                    populationn.at(i+1).infect(5);\
+                    
+                    
+                    
+                }
+        }
+    }
+    }
+    void give_vaccine() {
+        while (0 < 1) {
+			    int ppl_vaccinated = populationn.size()*vaccinated;
+				if (count_vaccinated() == ppl_vaccinated) {
+					break;
+				}
+				double bad_luck = rand() % populationn.size();
+				int position = floor(bad_luck);
+					
+				if (!populationn.at(position).is_infected()) {
+					populationn.at(position).set_vaccinated();
+				}
+						
+        }
+    }
+    void set_probability_of_transfer(double probability) {
+        prob = probability;
+    }
+    void set_vaccinated_people(double amount) {
+        vaccinated = amount;
+    }
+    void contact_create(int num) {
+        contact = num;
+    }
+    };
+int main() {
+    srand(time(NULL));
+    int inppl, contactnum;
+    double vaccine,probability;
+    cout << "how many ppl" << endl;
+        cin >> inppl;
+    population populationyuh(inppl);
+    int step = 1;
+    populationyuh.random_infection();
+    cout << "probability of contagion?" << endl;
+        cin >> probability;
+    populationyuh.set_probability_of_transfer(probability);
+    cout << "percent vaccinated in decimal form" << endl;
+        cin >> vaccine;
+    populationyuh.set_vaccinated_people(vaccine);
+    populationyuh.give_vaccine();
+    cout << "contact" << endl;
+    cin >> contactnum;
+    populationyuh.contact_create(contactnum);
+    for ( ; ; step++) {   
+            cout << "current population at day" << step << " ";
+        populationyuh.printme();
+        cout << endl;
+        populationyuh.contagion();
+        populationyuh.update2();
+        if (populationyuh.count_infected() == 0) {
+            break;
+    }
+    }    
+return 0;
+}  
 ```
 </details>
+
+Example of Output:
+	
+```python:
+how many ppl
+50
+probability of contagion?
+.3
+percent vaccinated in decimal form
+.06
+contact
+4
+
+current population at day1  ? v ? v ? ? + ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? v ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?
+current population at day2  ? v ? v ? ? + + ? ? + ? ? ? ? ? ? ? + ? ? ? ? + ? ? ? ? + ? + v ? ? ? ? ? + ? ? ? ? ? ? ? ? ? ? ? ?
+current population at day3  + v + v ? + + + ? + + ? ? ? + + + ? + ? + ? ? + + ? ? ? + ? + v ? + ? ? ? + ? + ? ? + ? ? + + ? ? ?
+current population at day4  + v + v + + + + + + + ? ? ? + + + + + ? + + + + + ? + + + + + v + + + ? ? + ? + ? ? + ? ? + + + ? +
+current population at day5  + v + v + + + + + + + + + ? + + + + + ? + + + + + + + + + + + v + + + ? + + + + + ? + + ? + + + ? +
+current population at day6  + v + v + + - + + + + + + + + + + + + + + + + + + + + + + + + v + + + + + + + + + + + + ? + + + + +
+current population at day7  + v + v + + - - + + - + + + + + + + - + + + + - - + + + - + - v + + + + + - + + + + + + + + + + + +
+current population at day8  - v - v - - - - - - - + + + - - - - - + - + + - - + + + - + - v + - + + + - + - + + - + + - - + + +
+current population at day9  - v - v - - - - - - - - + + - - - - - + - - - - - + - - - - - v - - - + + - + - + + - + + - - - + -
+current population at day10  - v - v - - - - - - - - - - - - - - - + - - - - - - - - - - - v - - - + - - - - - + - - + - - - + -
+
+```
 
 
 
