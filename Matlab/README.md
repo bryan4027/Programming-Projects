@@ -18,7 +18,7 @@ Integrate the ODE with initial conditions y(0) = 0 over the interval x 2 [0; 1] 
 functions. The solution will serve as your “exact” solution.
 
 <p align="center">
-    Q1 Part 1: 
+    # Q1 Part 1: 
 </p>
 
    Implement explicit Euler, implicit Euler, midpoint, trapezoidal, Adams-Bashforth 2,
