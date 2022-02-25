@@ -1054,12 +1054,13 @@ end
 # Question 2: 
 
 Consider the following N * N tridiagonal matrix TN:
+```Matlab:
 TN = 
-[-2   1       0 ]
-[ 1  ... ...  0 ]
-[    ... ...  1 ]
-[ 0       1  -2 ]
-
+|-2   1       0 |
+| 1  ... ...  0 |
+|    ... ...  1 |
+| 0       1  -2 |
+```
 where N >= 1.
    Compute the eigenvalues of the matrix for N = 10 and confirm that they are
 lamda(i) = -2(1- cos(pi*i/(N + 1)) at i = 1, ... ,N (3)
