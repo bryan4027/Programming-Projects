@@ -2,15 +2,24 @@
 
 The objective of this homework is to explore the application of numerical methods for the solution of ODEs with emphasis on accuracy of a numerical solution.
 
-Question:
+
+<p align="center">
+    Question 1:
+</p>
+
 Consider the following ODE:
 
-dy(x)dx = y0(x) = 􀀀50(y 􀀀 cos(x)): (1)
+<p align="center">
+    dy(x)dx = y0(x) = 􀀀50(y 􀀀 cos(x)): (1)
+</p>
+
 
 Integrate the ODE with initial conditions y(0) = 0 over the interval x 2 [0; 1] using MATLAB built-in
 functions. The solution will serve as your “exact” solution.
 
-Part A: 
+<p align="center">
+    Part A: 
+</p>
 
 Implement explicit Euler, implicit Euler, midpoint, trapezoidal, Adams-Bashforth 2,
 explicit Runge-Kutta 2 (RK2), and explicit Runge-Kutta 4 (RK4) into MATLAB solvers. Details
