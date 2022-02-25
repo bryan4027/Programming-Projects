@@ -21,13 +21,13 @@ functions. The solution will serve as your “exact” solution.
     Part A: 
 </p>
 
-     Implement explicit Euler, implicit Euler, midpoint, trapezoidal, Adams-Bashforth 2,
+   Implement explicit Euler, implicit Euler, midpoint, trapezoidal, Adams-Bashforth 2,
 explicit Runge-Kutta 2 (RK2), and explicit Runge-Kutta 4 (RK4) into MATLAB solvers. Details
 for the explicit RK4 method are given below and are also available on the class notes (Chapter
 4). 
-     Always start with a small value of h and plot the numerical solution in [0; 1] together with the MATLAB solution above. Confirm that you implemented the method correctly and get an idea
+   Always start with a small value of h and plot the numerical solution in [0; 1] together with the MATLAB solution above. Confirm that you implemented the method correctly and get an idea
 of suitable time step sizes. 
-     Turn in plots of numerical solutions on the same graph together with the exact solution. For each method, produce a separate plot with the numerical solutions obtained with four reasonable choices of the time step size h as to convey the idea that the numerical solution is converging to the exact one.
+   Turn in plots of numerical solutions on the same graph together with the exact solution. For each method, produce a separate plot with the numerical solutions obtained with four reasonable choices of the time step size h as to convey the idea that the numerical solution is converging to the exact one.
 
 <details>
 <summary>Show Part A Matlab code </summary>
