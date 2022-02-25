@@ -3,9 +3,9 @@
 The objective of this homework is to explore the application of numerical methods for the solution of ODEs with emphasis on accuracy of a numerical solution.
 
 
-<p align="center">
-    Question 1:
-</p>
+
+# Question 1:
+
 
 Consider the following ODE:
 
@@ -17,9 +17,9 @@ Consider the following ODE:
 Integrate the ODE with initial conditions y(0) = 0 over the interval x 2 [0; 1] using MATLAB built-in
 functions. The solution will serve as your “exact” solution.
 
-<p align="center">
-    # Q1 Part 1: 
-</p>
+
+# Q1 Part 1: 
+
 
    Implement explicit Euler, implicit Euler, midpoint, trapezoidal, Adams-Bashforth 2,
 explicit Runge-Kutta 2 (RK2), and explicit Runge-Kutta 4 (RK4) into MATLAB solvers. Details
@@ -215,9 +215,9 @@ end
 ```
 </details>
 
-<p align="center">
-    Q1 Part 1: 
-</p>
+
+# Q1 Part 1: 
+
 
    For each method, advance the solution until x = 1. Repeat with various step sizes h
 and compute the difference between the numerical solution and the “exact” solution. Call this
@@ -481,9 +481,9 @@ end
 ```
 </details>
 
-<p align="center">
-    Q1 Part 3 & 4: 
-</p>
+
+# Q1 Part 3 & 4: 
+
 
    For each method, fit a function E = Ch^Alpha to the (h; jej) pairs and confirm that Alpha is close to the value you expect given the rate of convergence of a specific method from the book and
 class notes.
