@@ -216,7 +216,7 @@ end
 </details>
 
 
-# Q1 Part 1: 
+# Q1 Part 2: 
 
 
    For each method, advance the solution until x = 1. Repeat with various step sizes h
@@ -1047,6 +1047,48 @@ function lambda = lambda(x,y)
     lambda  = -2*(1-cos(pi*x/(y+1)));
     return
 end
+    
+```
+</details>
+
+# Question 2: 
+
+Consider the following N  N tridiagonal matrix TN:
+TN = 
+[-2   1       0
+  1  ... ...  0
+     ... ...  1
+  0       1  -2 ]
+
+where N >= 1.
+   Compute the eigenvalues of the matrix for N = 10 and confirm that they are
+lamda(i) = -2(1- cos(pi*i/(N + 1)) at i = 1; : : : ;N (3)
+Next, plot max abs(lambda), i.e. the maximum absolute value of all eigenvalues of TN versus N for N = 1,..., 20. 
+   Comment on the behavior of max abs(lambda) as N changes. Reconciliate your finding with the expression for lamda provided above in Eq. (3).
+Turn in plots that support your answers and explanations.
+
+
+```Matlab:
+
+%% Question 2:
+
+eig = zeros(length(i),1);
+for i = 1:20
+    eig(i) = max(abs(lambda((1:i)',i)));
+end
+plot(1:20, eig)
+title('Maximum Eigenvalues')
+ylabel('Max Eig Value')
+xlabel('N')
+
+eigen_values = (lambda((1:10)',10))';
+disp(eigen_values)
+
+%{
+The amount of Eigen Values is linear to the amount of N the function has,
+making this plot. This graph shows that how the eigenvalues approach 4 as N
+goes to infinity. 
+%}
     
 ```
 </details>
