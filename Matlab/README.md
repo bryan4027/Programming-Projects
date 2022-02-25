@@ -1055,10 +1055,10 @@ end
 
 Consider the following N * N tridiagonal matrix TN:
 TN = 
-[-2   1       0
-  1  ... ...  0
-     ... ...  1
-  0       1  -2 ]
+|-2   1       0 |
+| 1  ... ...  0 |
+|    ... ...  1 |
+| 0       1  -2 |
 
 where N >= 1.
    Compute the eigenvalues of the matrix for N = 10 and confirm that they are
@@ -1067,6 +1067,10 @@ Next, plot max abs(lambda), i.e. the maximum absolute value of all eigenvalues o
    Comment on the behavior of max abs(lambda) as N changes. Reconciliate your finding with the expression for lamda provided above in Eq. (3).
 Turn in plots that support your answers and explanations.
 
+<details>
+<summary>Show Part Q2 Matlab code </summary>
+Matlab
+    
 ```Matlab:
 
 %% Question 2:
