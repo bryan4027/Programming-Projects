@@ -1053,7 +1053,7 @@ end
 
 # Question 2: 
 
-Consider the following N  N tridiagonal matrix TN:
+Consider the following N * N tridiagonal matrix TN:
 TN = 
 [-2   1       0
   1  ... ...  0
@@ -1066,7 +1066,6 @@ lamda(i) = -2(1- cos(pi*i/(N + 1)) at i = 1; : : : ;N (3)
 Next, plot max abs(lambda), i.e. the maximum absolute value of all eigenvalues of TN versus N for N = 1,..., 20. 
    Comment on the behavior of max abs(lambda) as N changes. Reconciliate your finding with the expression for lamda provided above in Eq. (3).
 Turn in plots that support your answers and explanations.
-
 
 ```Matlab:
 
