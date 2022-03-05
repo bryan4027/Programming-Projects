@@ -4,7 +4,5 @@ I am a proud first-generation third-year computational engineering student at th
 
 This is just the start of a repository off all programs that I have worked on (that I am allowed to share of course). I will add more programs as I find more programs I have done and as I write more programs.
 
-This website has my linkedin, resume, and more! https://linktr.ee/bryanacosta
-
 If you have any questions about me or my experience please feel free to reach out. My email is b.acosta@utexas.edu.
 
