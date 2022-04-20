@@ -1,0 +1,21 @@
+// Mesh generated on: 3-24-2022
+// Local Directory: /home1/07656/ewang/mainclassrepo/OpenFOAM/v7/circular-cylinder/system
+// Username: ewang
+
+// Lf (fore)  =  4.000000
+// Lw (wake)  =  6.000000
+// R  (outer) =  1.000000
+// H  (top/bottom) = 4.000000
+
+FoamFile
+{
+	version  2.0;
+	format   ascii;
+	class    dictionary;
+	object   blockMeshDict;
+}
+
+convertToMeters 1.0;
+
+vertices
+(
